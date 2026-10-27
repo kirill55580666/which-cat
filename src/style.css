@@ -7,5 +7,3 @@
 @media(max-width:380px){.app-shell{padding-left:16px;padding-right:16px;padding-top:22px}.brand{font-size:39px}.site-header{padding-bottom:22px}.cat-name{font-size:49px}.art-stage{max-width:290px}.cat-motto{font-size:29px}.cat-description{font-size:14px}.stats{gap:9px;margin-left:0;margin-right:0}.stat-chip{font-size:11px;gap:6px;padding:8px 10px}.stat-chip strong{font-size:27px}.eyebrow{font-size:10px}.quiz-heading{font-size:39px}.bottom-nav{padding-left:28px;padding-right:28px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
-/* Hide neighbouring cell marks at the edge of generated illustration atlases. */
-.cat-art:not(.art-fallback){clip-path:inset(3% 4%)}

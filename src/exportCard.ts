@@ -2,6 +2,7 @@ import atlas1 from './assets/cats-1.png';
 import atlas2 from './assets/cats-2.png';
 import atlas3 from './assets/cats-3.png';
 import type { Card, Cat, CatVariant } from './types';
+import { artRects } from './artRects';
 
 const atlases = [atlas1, atlas2, atlas3];
 function lines(ctx: CanvasRenderingContext2D, text: string, width: number): string[] {
@@ -41,12 +42,10 @@ export async function renderCard(cat: Cat, variant: CatVariant, card: Card): Pro
   ctx.fillStyle = '#202022'; ctx.font = '700 82px Caveat';
   for (const line of nameLines) { ctx.fillText(line, 540, y); y += 85; }
   y += 22;
-  const col = cat.art % 5, row = Math.floor((cat.art % 20) / 5);
-  const cellWidth = img.naturalWidth / 5, cellHeight = img.naturalHeight / 4;
-  ctx.save();
-  ctx.beginPath(); ctx.rect(270 + 540 * .04, y + 540 * .03, 540 * .92, 540 * .94); ctx.clip();
-  ctx.drawImage(img, col * cellWidth, row * cellHeight, cellWidth, cellHeight, 270, y, 540, 540);
-  ctx.restore();
+  const rect = artRects[cat.art];
+  const scale = Math.min(540 / rect.width, 540 / rect.height);
+  const width = rect.width * scale, height = rect.height * scale;
+  ctx.drawImage(img, rect.x, rect.y, rect.width, rect.height, 270 + (540 - width) / 2, y + (540 - height) / 2, width, height);
   y += 570;
   ctx.font = '700 51px Caveat';
   for (const line of titleLines) { ctx.fillText(line, 540, y); y += 57; }
