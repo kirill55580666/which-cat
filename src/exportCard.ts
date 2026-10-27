@@ -43,7 +43,10 @@ export async function renderCard(cat: Cat, variant: CatVariant, card: Card): Pro
   y += 22;
   const col = cat.art % 5, row = Math.floor((cat.art % 20) / 5);
   const cellWidth = img.naturalWidth / 5, cellHeight = img.naturalHeight / 4;
+  ctx.save();
+  ctx.beginPath(); ctx.rect(270 + 540 * .04, y + 540 * .03, 540 * .92, 540 * .94); ctx.clip();
   ctx.drawImage(img, col * cellWidth, row * cellHeight, cellWidth, cellHeight, 270, y, 540, 540);
+  ctx.restore();
   y += 570;
   ctx.font = '700 51px Caveat';
   for (const line of titleLines) { ctx.fillText(line, 540, y); y += 57; }

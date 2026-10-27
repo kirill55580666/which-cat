@@ -6,3 +6,6 @@
 @media(min-width:650px){body{background-image:radial-gradient(#e6e0d9 .7px,transparent .7px);background-size:13px 13px}.app-shell{margin-top:30px;margin-bottom:30px;min-height:0;border:1px solid #eeebe4;box-shadow:0 8px 45px #675f4510;border-radius:5px;padding:30px 34px 25px}.site-header{padding-bottom:27px}.art-stage{max-width:335px}.cat-name{font-size:63px}.cat-description{font-size:15px}.quiz-card{min-height:535px}}
 @media(max-width:380px){.app-shell{padding-left:16px;padding-right:16px;padding-top:22px}.brand{font-size:39px}.site-header{padding-bottom:22px}.cat-name{font-size:49px}.art-stage{max-width:290px}.cat-motto{font-size:29px}.cat-description{font-size:14px}.stats{gap:9px;margin-left:0;margin-right:0}.stat-chip{font-size:11px;gap:6px;padding:8px 10px}.stat-chip strong{font-size:27px}.eyebrow{font-size:10px}.quiz-heading{font-size:39px}.bottom-nav{padding-left:28px;padding-right:28px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Hide neighbouring cell marks at the edge of generated illustration atlases. */
+.cat-art:not(.art-fallback){clip-path:inset(3% 4%)}
