@@ -17,10 +17,17 @@ describe('game state and selection', () => {
     expect(dailyCard(state, '2026-10-28')).toEqual(nextDay);
   });
 
-  it('uses art 8 for the first daily card and keeps it while random cards are requested', () => {
+  it('selects the first daily cat randomly instead of forcing a specific character', () => {
+    const first = dailyCard(freshState(), '2026-10-27', () => 0);
+    const other = dailyCard(freshState(), '2026-10-27', () => 0.999);
+    expect(first.catId).not.toBe(other.catId);
+    expect(catById.has(first.catId)).toBe(true);
+    expect(catById.has(other.catId)).toBe(true);
+  });
+
+  it('keeps the daily card while random cards are requested', () => {
     const state = freshState();
     const daily = dailyCard(state, '2026-10-27', fixedRandom);
-    expect(catById.get(daily.catId)?.art).toBe(8);
 
     const randomCard = nextRandom(state, fixedRandom);
     expect(randomCard.catId).not.toBe(daily.catId);

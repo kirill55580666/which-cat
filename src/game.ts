@@ -63,11 +63,9 @@ function makeCard(state: GameState, id: string, random: () => number): Card {
 export function dailyCard(state: GameState, date = localDate(), random = Math.random): Card {
   if (state.dailyDate === date && state.daily) return state.daily;
   const previous = state.daily?.catId;
-  const isFirst = !state.daily && !state.dailyDate;
   if (!state.dailyQueue.length) state.dailyQueue = shuffle(ids, random);
   let index = state.dailyQueue.findIndex(id => id !== previous && !state.recent.includes(id));
   if (index < 0) index = state.dailyQueue.findIndex(id => id !== previous);
-  if (isFirst) index = state.dailyQueue.findIndex(id => catById.get(id)?.art === 8);
   const [id] = state.dailyQueue.splice(index < 0 ? 0 : index, 1);
   state.daily = makeCard(state, id, random);
   state.dailyDate = date;
